@@ -106,7 +106,7 @@ public class Controller {
             mjActual.setFirstName(mj.getFirstName());
             mjActual.setLastName(mj.getLastName());
             mjActual.setEmail(mj.getEmail());
-            mjActual.setPhoneNumber(mj.getEmail());
+            mjActual.setPhoneNumber(mj.getPhoneNumber());
 
             mjUpdated = mjService.save(mjActual);
         }catch(DataAccessException e) {

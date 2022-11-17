@@ -32,8 +32,9 @@ public class IMariaJackieImpl implements IMariaJackieService{
     }
 
     @Override
-    @Transactional
     public void delete(Long id) {
         mjDao.deleteById(id);
     }
+
+
 }

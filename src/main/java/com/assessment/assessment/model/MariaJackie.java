@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -18,32 +20,26 @@ public class MariaJackie implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Size(max = 25)
+    @NotNull
     private String firstName;
 
     @Size(max = 25)
+    @NotNull
     private String lastName;
 
-    @Size(max = 20)
-    @Digits(integer = 0, fraction =20)
+    @Pattern(regexp = "(\\+34|0)[0-9]{9}")
+    @NotNull
     private String phoneNumber;
 
     @Size(max = 25)
     @Email
+    @NotNull
     private String email;
 
-
-    /*
-[id] [int] NULL,
-[firstName] [varchar](25) NULL,
-[lastName] [varchar](25) NULL,
-[phoneNumber] [varchar](20) NULL,
-[email] [varchar](25) NULL
-     */
-
-    public MariaJackie(int id, String firstName, String lastName, String phoneNumber, String email) {
+    public MariaJackie(Long id, String firstName, String lastName, String phoneNumber, String email) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -51,11 +47,14 @@ public class MariaJackie implements Serializable {
         this.email = email;
     }
 
+    public MariaJackie() {
+    }
+
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
@@ -75,7 +74,7 @@ public class MariaJackie implements Serializable {
         return email;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
